@@ -1,10 +1,12 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 
 class Card;
 
-typedef std::vector<Card*> VectorOfCards;
+typedef std::unique_ptr<Card> CardPtr;
+typedef std::vector<CardPtr> VectorOfCards;
 
 class Deck
 {

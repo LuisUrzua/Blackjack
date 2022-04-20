@@ -1,5 +1,6 @@
 #include "Card.h"
 #include "Deck.h"
+#include "Player.h"
 
 #include <iostream>
 
@@ -17,4 +18,6 @@ int main()
 void Test()
 {
     Deck deck;
+    Player player;
+    player.ReadInput();
 }
