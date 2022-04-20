@@ -1,4 +1,5 @@
 #include "Card.h"
+#include "Deck.h"
 
 #include <iostream>
 
@@ -15,5 +16,5 @@ int main()
 
 void Test()
 {
-    Card card;
+    Deck deck;
 }
