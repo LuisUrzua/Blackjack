@@ -24,9 +24,12 @@ void StartGame()
     Player player;
     Dealer dealer;
 
-    deck.ShuffleDeck();
-    dealer.StartHand(deck);
-    player.StartHand(deck);
-    player.PlayerTurn(input, deck);
-    dealer.DealerTurn(deck);
+    while (true)
+    {
+        dealer.StartHand(deck);
+        player.StartHand(deck);
+        player.PlayerTurn(input, deck);
+        dealer.DealerTurn(deck);
+        deck.ResetDeck();
+    }
 }

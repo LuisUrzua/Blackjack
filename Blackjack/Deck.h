@@ -12,9 +12,12 @@ class Deck
 {
 public:
 	Deck();
-	void ShuffleDeck();
 	void PrintDeck() const;
 	CardPtr GrabCardFromDeck();
+	void ResetDeck();
+
+private:
+	void ShuffleDeck();
 
 private:
 	VectorOfCards cards_in_deck;

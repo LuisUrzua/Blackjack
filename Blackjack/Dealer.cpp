@@ -50,6 +50,8 @@ void Dealer::DealerTurn(Deck& deck)
             break;
         }
     }
+
+    dealer_hand.clear();
 }
 
 void Dealer::StartHand(Deck& deck)

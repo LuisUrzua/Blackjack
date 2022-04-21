@@ -60,6 +60,7 @@ void Player::PlayerTurn(Input& input, Deck& deck)
     }
 
     //system("cls");
+    player_hand.clear();
 }
 
 void Player::StartHand(Deck& deck)

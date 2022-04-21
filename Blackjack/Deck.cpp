@@ -34,13 +34,7 @@ const Suit all_suits[] =
 
 Deck::Deck()
 {
-	for (int rank = 0; rank < NUMBER_OF_RANKS; rank++)
-	{
-		for (int suit = 0; suit < NUMBER_OF_SUITS; suit++)
-		{
-			cards_in_deck.push_back(std::make_unique<Card> (Card(all_ranks[rank], all_suits[suit])));
-		}
-	}
+	ResetDeck();
 }
 
 void Deck::ShuffleDeck()
@@ -65,4 +59,19 @@ CardPtr Deck::GrabCardFromDeck()
 	auto top_card = std::move(cards_in_deck.at(0));
 	cards_in_deck.erase(cards_in_deck.begin());
 	return std::move(top_card);
+}
+
+void Deck::ResetDeck()
+{
+	cards_in_deck.clear();
+
+	for (int rank = 0; rank < NUMBER_OF_RANKS; rank++)
+	{
+		for (int suit = 0; suit < NUMBER_OF_SUITS; suit++)
+		{
+			cards_in_deck.push_back(std::make_unique<Card>(Card(all_ranks[rank], all_suits[suit])));
+		}
+	}
+
+	ShuffleDeck();
 }
