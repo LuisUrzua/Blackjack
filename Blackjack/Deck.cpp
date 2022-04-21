@@ -2,6 +2,7 @@
 #include "Card.h"
 
 #include <random>
+#include <iostream>
 
 #define NUMBER_OF_RANKS 13
 #define NUMBER_OF_SUITS 4
@@ -49,8 +50,20 @@ void Deck::ShuffleDeck()
 
 void Deck::PrintDeck() const
 {
+	std::cout << "Size of deck: " << cards_in_deck.size() << std::endl;
+
 	for (const auto& card : cards_in_deck)
 	{
 		card->PrintCard();
 	}
+
+	std::cout << std::endl;
+}
+
+CardPtr Deck::GrabCardFromDeck()
+{
+	auto top_card = std::move(cards_in_deck.at(0));
+	cards_in_deck.erase(cards_in_deck.begin());
+	return std::move(top_card);
+	//return std::move(cards_in_deck.at(0));
 }

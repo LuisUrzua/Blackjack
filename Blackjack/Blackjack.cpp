@@ -21,7 +21,11 @@ void Test()
 {
     Deck deck;
     Input input;
+    Player player;
     input.ReadInput();
     deck.ShuffleDeck();
     deck.PrintDeck();
+    player.InsertCard(deck.GrabCardFromDeck());
+    deck.PrintDeck();
+    player.PrintHand();
 }

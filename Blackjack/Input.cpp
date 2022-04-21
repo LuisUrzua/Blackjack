@@ -28,4 +28,6 @@ void Input::ReadInput()
 			break;
 		}
 	}
+
+	std::cout << std::endl;
 }

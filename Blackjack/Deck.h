@@ -14,6 +14,7 @@ public:
 	Deck();
 	void ShuffleDeck();
 	void PrintDeck() const;
+	CardPtr GrabCardFromDeck();
 
 private:
 	VectorOfCards cards_in_deck;
