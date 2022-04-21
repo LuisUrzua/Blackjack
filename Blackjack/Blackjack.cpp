@@ -20,4 +20,6 @@ void Test()
     Deck deck;
     Player player;
     player.ReadInput();
+    deck.ShuffleDeck();
+    deck.PrintDeck();
 }

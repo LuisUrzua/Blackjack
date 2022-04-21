@@ -13,6 +13,7 @@ class Deck
 public:
 	Deck();
 	void ShuffleDeck();
+	void PrintDeck() const;
 
 private:
 	VectorOfCards cards_in_deck;

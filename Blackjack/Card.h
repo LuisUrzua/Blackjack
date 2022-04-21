@@ -29,6 +29,7 @@ class Card
 {
 public:
 	Card(Rank, Suit);
+	void PrintCard() const;
 
 private:
 	Rank rank;

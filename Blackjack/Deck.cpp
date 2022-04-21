@@ -6,7 +6,7 @@
 #define NUMBER_OF_RANKS 13
 #define NUMBER_OF_SUITS 4
 
-Rank all_ranks[] =
+const Rank all_ranks[] =
 {
 	Rank::Ace,
 	Rank::Two,
@@ -23,7 +23,7 @@ Rank all_ranks[] =
 	Rank::King,
 };
 
-Suit all_suits[] =
+const Suit all_suits[] =
 {
 	Suit::Clubs,
 	Suit::Diamonds,
@@ -45,4 +45,12 @@ Deck::Deck()
 void Deck::ShuffleDeck()
 {
 	std::shuffle(cards_in_deck.begin(), cards_in_deck.end(), std::random_device());
+}
+
+void Deck::PrintDeck() const
+{
+	for (const auto& card : cards_in_deck)
+	{
+		card->PrintCard();
+	}
 }
