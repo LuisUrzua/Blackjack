@@ -12,6 +12,7 @@ class Deck
 {
 public:
 	Deck();
+	void ShuffleDeck();
 
 private:
 	VectorOfCards cards_in_deck;
