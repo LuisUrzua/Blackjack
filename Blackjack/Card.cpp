@@ -43,10 +43,56 @@ Card::Card(Rank r, Suit s)
 	rank = r;
 	suit = s;
 	SetConsoleOutputCP(CP_UTF8);
-	//setvbuf(stdout, nullptr, _IOFBF, 1000);
 }
 
 void Card::PrintCard() const
 {
 	std::cout << cout_rank.at(rank) << cout_suit.at(suit) << std::endl;
+}
+
+int Card::CardValue() const
+{
+	int rank_int = 0;
+
+	switch (rank)
+	{
+	case Rank::Ace:
+		rank_int = 1;
+		break;
+	case Rank::Two:
+		rank_int = 2;
+		break;
+	case Rank::Three:
+		rank_int = 3;
+		break;
+	case Rank::Four:
+		rank_int = 4;
+		break;
+	case Rank::Five:
+		rank_int = 5;
+		break;
+	case Rank::Six:
+		rank_int = 6;
+		break;
+	case Rank::Seven:
+		rank_int = 7;
+		break;
+	case Rank::Eighth:
+		rank_int = 8;
+		break;
+	case Rank::Nine:
+		rank_int = 9;
+		break;
+	case Rank::Ten:
+	case Rank::Jack:
+	case Rank::Queen:
+	case Rank::King:
+		rank_int = 10;
+		break;
+	default:
+		std::cout << "Error: CardValue() default." << std::endl;
+		rank_int = -1000;
+	}
+
+	return rank_int;
 }

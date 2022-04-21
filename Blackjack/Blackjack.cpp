@@ -6,26 +6,27 @@
 
 #include <iostream>
 
-void Test();
+void StartGame();
 
 int main()
 {
     std::cout << "Blackjack" << std::endl;
 
-    Test();
+    StartGame();
 
     return 0;
 }
 
-void Test()
+void StartGame()
 {
     Deck deck;
     Input input;
     Player player;
-    input.ReadInput();
+    Dealer dealer;
+
     deck.ShuffleDeck();
-    deck.PrintDeck();
-    player.InsertCard(deck.GrabCardFromDeck());
-    deck.PrintDeck();
-    player.PrintHand();
+    dealer.StartHand(deck);
+    player.StartHand(deck);
+    player.PlayerTurn(input, deck);
+    dealer.DealerTurn(deck);
 }

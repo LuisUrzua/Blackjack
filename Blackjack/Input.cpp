@@ -3,9 +3,20 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <map>
 
-void Input::ReadInput()
+typedef std::map<std::string, Action> StringToAction;
+
+const StringToAction convert_string_to_action =
 {
+	{ "H", Action::Hit	 },
+	{ "S", Action::Stand },
+};
+
+Action Input::ReadInput()
+{
+	Action action = Action::Undefined;
+
 	while (true)
 	{
 		std::string player_input;
@@ -25,9 +36,12 @@ void Input::ReadInput()
 		}
 		else
 		{
+			action = convert_string_to_action.at(player_input);
 			break;
 		}
 	}
 
 	std::cout << std::endl;
+
+	return action;
 }

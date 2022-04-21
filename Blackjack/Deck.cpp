@@ -65,5 +65,4 @@ CardPtr Deck::GrabCardFromDeck()
 	auto top_card = std::move(cards_in_deck.at(0));
 	cards_in_deck.erase(cards_in_deck.begin());
 	return std::move(top_card);
-	//return std::move(cards_in_deck.at(0));
 }
