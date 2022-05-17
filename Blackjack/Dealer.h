@@ -14,11 +14,11 @@ class Dealer
 public:
     void StartHand(Deck&);
     void DealerTurn(Deck&);
+    int HandValue() const;
 
 private:
     void InsertCard(CardPtr);
     void PrintHand() const;
-    int HandValue() const;
 
 private:
     VectorOfCards dealer_hand;

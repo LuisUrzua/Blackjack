@@ -7,7 +7,7 @@ enum class Action
 {
     Hit,
     Stand,
-    Double_Down,
+    Double,
     Split,
     Undefined,
 };
