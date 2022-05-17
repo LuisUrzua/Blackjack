@@ -5,17 +5,17 @@
 #include <algorithm>
 #include <map>
 
-typedef std::map<std::string, Action> StringToAction;
+typedef std::map<std::string, PlayerAction> StringToAction;
 
 const StringToAction convert_string_to_action =
 {
-	{ "H", Action::Hit	 },
-	{ "S", Action::Stand },
+	{ "H", PlayerAction::Hit	 },
+	{ "S", PlayerAction::Stand },
 };
 
-Action Input::ReadInput()
+PlayerAction Input::ReadInput()
 {
-	Action action = Action::Undefined;
+	PlayerAction action = PlayerAction::Undefined;
 
 	while (true)
 	{

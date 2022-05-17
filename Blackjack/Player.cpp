@@ -2,6 +2,7 @@
 #include "Card.h"
 #include "Deck.h"
 #include "Input.h"
+#include "Strategy.h"
 
 #include <iostream>
 #include <stdlib.h>
@@ -27,11 +28,50 @@ void Player::PrintHand() const
 
 void Player::PlayerTurn(Input& input, Deck& deck)
 {
-    Action action = Action::Undefined;
+    PlayerAction action = PlayerAction::Undefined;
 
     while (true)
     {
         action = input.ReadInput();
+
+        if (action == PlayerAction::Hit)
+        {
+            std::cout << "Player hits..." << std::endl << std::endl;
+            InsertCard(deck.GrabCardFromDeck());
+            PrintHand();
+
+            if (HandValue() > BLACKJACK)
+            {
+                std::cout << "Player busts..." << std::endl << std::endl;
+                break;
+            }
+
+            continue;
+        }
+        else if (action == PlayerAction::Stand)
+        {
+            std::cout << "Player stands..." << std::endl << std::endl;
+            break;
+        }
+        else
+        {
+            /* Undefined */
+            std::cout << "Error: PlayerTurn() undefined." << std::endl;
+        }
+    }
+
+    //system("cls");
+    player_hand.clear();
+}
+
+void Player::PlayerTurn(const Dealer& dealer, Deck& deck)
+{
+    Action action = Action::Undefined;
+    StrategyPtr basic_strategy = std::make_unique<Strategy>(Strategy());
+
+    while (true)
+    {
+        action = basic_strategy->PlayerStrategy(*this, dealer);
 
         if (action == Action::Hit)
         {
@@ -52,15 +92,33 @@ void Player::PlayerTurn(Input& input, Deck& deck)
             std::cout << "Player stands..." << std::endl << std::endl;
             break;
         }
-        else
+        else if (action == Action::Double)
         {
-            /* Undefined */
-            std::cout << "Error: PlayerTurn() undefined." << std::endl;
+            std::cout << "Player doubles..." << std::endl << std::endl;
+            InsertCard(deck.GrabCardFromDeck());
+            PrintHand();
+            // DoubleWager();
+
+            if (HandValue() > BLACKJACK)
+            {
+                std::cout << "Player busts..." << std::endl << std::endl;
+                break;
+            }
+
+            break;
+        }
+        else if (action == Action::Split)
+        {
+            std::cout << "Player splits..." << std::endl << std::endl;
+            // SplitHand();
+            break;
+        }
+        else if (action == Action::Undefined)
+        {
+            std::cout << "Error in Player::PlayerTurn() action undefined" << std::endl << std::endl;
+            break;
         }
     }
-
-    //system("cls");
-    player_hand.clear();
 }
 
 void Player::StartHand(Deck& deck)

@@ -20,7 +20,7 @@ int main()
 void StartGame()
 {
     Deck deck;
-    Input input;
+    //Input input;
     Player player;
     Dealer dealer;
 
@@ -28,8 +28,10 @@ void StartGame()
     {
         dealer.StartHand(deck);
         player.StartHand(deck);
-        player.PlayerTurn(input, deck);
+        //player.PlayerTurn(input, deck);
+        player.PlayerTurn(dealer, deck);
         dealer.DealerTurn(deck);
         deck.ResetDeck();
+        break;
     }
 }

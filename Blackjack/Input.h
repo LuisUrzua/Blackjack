@@ -1,15 +1,17 @@
 #pragma once
 
-enum class Action
+enum class PlayerAction
 {
     Hit,
     Stand,
+    Double,
+    Split,
     Undefined,
 };
 
 class Input
 {
 public:
-    Action ReadInput();
+    PlayerAction ReadInput();
 };
 
