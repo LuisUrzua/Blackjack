@@ -15,11 +15,13 @@ class Player
 public:
     void StartHand(Deck&);
     void PlayerTurn(Input&, Deck&);
+    int HandValue() const;
+    bool HandContainsAce() const;
+    bool PairedHand() const;
 
 private:
     void InsertCard(CardPtr);
     void PrintHand() const;
-    int HandValue() const;
 
 private:
     VectorOfCards player_hand;

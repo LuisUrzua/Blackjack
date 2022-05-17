@@ -92,3 +92,31 @@ int Player::HandValue() const
 
     return sum;
 }
+
+bool Player::HandContainsAce() const
+{
+    for (const auto& card : player_hand)
+    {
+        if (card->GetRank() == Rank::Ace)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool Player::PairedHand() const
+{
+    if (player_hand.size() != 2)
+    {
+        return false;
+    }
+
+    if (player_hand.at(0)->CardValue() == player_hand.at(1)->CardValue())
+    {
+        return true;
+    }
+
+    return false;
+}

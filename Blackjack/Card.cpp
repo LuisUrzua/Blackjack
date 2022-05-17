@@ -96,3 +96,8 @@ int Card::CardValue() const
 
 	return rank_int;
 }
+
+Rank Card::GetRank() const
+{
+	return rank;
+}

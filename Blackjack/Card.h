@@ -31,6 +31,7 @@ public:
 	Card(Rank, Suit);
 	void PrintCard() const;
 	int CardValue() const;
+	Rank GetRank() const;
 
 private:
 	Rank rank;
