@@ -12,6 +12,7 @@ typedef std::vector<CardPtr> VectorOfCards;
 class Dealer
 {
 public:
+    Dealer();
     void StartHand(Deck&);
     void DealerTurn(Deck&);
     int HandValue() const;
@@ -22,5 +23,6 @@ private:
 
 private:
     VectorOfCards dealer_hand;
+    int chips;
 };
 

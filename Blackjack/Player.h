@@ -16,12 +16,13 @@ typedef std::unique_ptr<Strategy> StrategyPtr;
 class Player
 {
 public:
+    Player();
     void StartHand(Deck&);
-    void PlayerTurn(Input&, Deck&);
     void PlayerTurn(const Dealer&, Deck&);
     int HandValue() const;
     bool HandContainsAce() const;
     bool PairedHand() const;
+    void CalculateBets(Dealer&);
 
 private:
     void InsertCard(CardPtr);
@@ -29,5 +30,6 @@ private:
 
 private:
     VectorOfCards player_hand;
+    int chips;
 };
 

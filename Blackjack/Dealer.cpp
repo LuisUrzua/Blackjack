@@ -7,6 +7,11 @@
 #define BLACKJACK 21
 #define DEALER_STANDS_ON_17 17
 
+Dealer::Dealer()
+{
+    chips = 100000;
+}
+
 void Dealer::InsertCard(CardPtr new_card)
 {
     dealer_hand.push_back(std::move(new_card));
@@ -14,7 +19,7 @@ void Dealer::InsertCard(CardPtr new_card)
 
 void Dealer::PrintHand() const
 {
-    std::cout << "Dealer hand: " << HandValue() << std::endl;
+    std::cout << "Dealer hand: " << HandValue() << ", Chips: " << chips << std::endl;
 
     for (const auto& card : dealer_hand)
     {

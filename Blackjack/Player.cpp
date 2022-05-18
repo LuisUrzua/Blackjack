@@ -9,6 +9,11 @@
 
 #define BLACKJACK 21
 
+Player::Player()
+{
+    chips = 100000;
+}
+
 void Player::InsertCard(CardPtr new_card)
 {
     player_hand.push_back(std::move(new_card));
@@ -16,7 +21,7 @@ void Player::InsertCard(CardPtr new_card)
 
 void Player::PrintHand() const
 {
-    std::cout << "Player hand: " << HandValue() << std::endl;
+    std::cout << "Player hand: " << HandValue() << ", Chips: " << chips << std::endl;
 
     for (const auto& card : player_hand)
     {
@@ -24,44 +29,6 @@ void Player::PrintHand() const
     }
 
     std::cout << std::endl;
-}
-
-void Player::PlayerTurn(Input& input, Deck& deck)
-{
-    PlayerAction action = PlayerAction::Undefined;
-
-    while (true)
-    {
-        action = input.ReadInput();
-
-        if (action == PlayerAction::Hit)
-        {
-            std::cout << "Player hits..." << std::endl << std::endl;
-            InsertCard(deck.GrabCardFromDeck());
-            PrintHand();
-
-            if (HandValue() > BLACKJACK)
-            {
-                std::cout << "Player busts..." << std::endl << std::endl;
-                break;
-            }
-
-            continue;
-        }
-        else if (action == PlayerAction::Stand)
-        {
-            std::cout << "Player stands..." << std::endl << std::endl;
-            break;
-        }
-        else
-        {
-            /* Undefined */
-            std::cout << "Error: PlayerTurn() undefined." << std::endl;
-        }
-    }
-
-    //system("cls");
-    player_hand.clear();
 }
 
 void Player::PlayerTurn(const Dealer& dealer, Deck& deck)
@@ -119,6 +86,9 @@ void Player::PlayerTurn(const Dealer& dealer, Deck& deck)
             break;
         }
     }
+
+    //system("cls");
+    player_hand.clear();
 }
 
 void Player::StartHand(Deck& deck)
@@ -177,4 +147,9 @@ bool Player::PairedHand() const
     }
 
     return false;
+}
+
+void Player::CalculateBets(Dealer& dealer)
+{
+
 }
